@@ -35,6 +35,9 @@ class Niva extends AbstractCar implements EngineWork_Intrface
             }
         }
     }
+    public function EngineOff(){
+        echo 'Двигатель не включен' . PHP_EOL;
+    }
 
     private function Cooler()
     {
@@ -45,7 +48,3 @@ class Niva extends AbstractCar implements EngineWork_Intrface
         }
     }
 }
-
-$Niva = new Niva();
-echo $Niva->GetName() . PHP_EOL;
-$Niva->moveCar(200, 10, 'вперед');

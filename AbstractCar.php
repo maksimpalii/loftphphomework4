@@ -1,5 +1,6 @@
 <?php
 require 'Mechanism.php';
+
 abstract class AbstractCar
 {
     use Mechanism;
@@ -20,14 +21,18 @@ abstract class AbstractCar
         $this->speed = $speed;
         $this->direction = $direction;
         $this->GetHorsePower();
-        if ($speed >= 1) {
+        if ($speed > 0) {
             $this->Engine();
+        } else {
+            $this->EngineOff();
         }
     }
+
     public function GetName()
     {
         return $this->name;
     }
+
     public function GetSpeed()
     {
         return $this->speed;

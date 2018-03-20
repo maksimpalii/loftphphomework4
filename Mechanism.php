@@ -1,5 +1,6 @@
 <?php
 require 'MoveDirection.php';
+
 trait Mechanism
 {
     use MoveDirection;
@@ -13,12 +14,20 @@ trait Mechanism
 
     public function TransmissionAuto()
     {
-        $this->MoveDirection();
+        if (method_exists(self::class, 'MoveDirection')) {
+            $this->MoveDirection();
+        } else {
+            echo 'Включаете передачу вперед, задней передачи нет ' . PHP_EOL;
+        }
     }
 
     public function TransmissionManual()
     {
-        $this->MoveDirection();
+        if (method_exists(self::class, 'MoveDirection')) {
+            $this->MoveDirection();
+        } else {
+            echo 'Включаете передачу вперед, задней передачи нет ' . PHP_EOL;
+        }
         $speed = $this->GetSpeed();
         if ($speed > 0 && $speed <= 20) {
             echo 'Включаем 1-ю передачу' . PHP_EOL;

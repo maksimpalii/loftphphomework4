@@ -10,4 +10,6 @@ interface EngineWork_Intrface
 
     public function EngineWork();
 
+    public function EngineOff();
+
 }
