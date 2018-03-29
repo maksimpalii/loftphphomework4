@@ -1,50 +1,24 @@
 <?php
 require 'AbstractCar.php';
-require 'EngineWork_Intrface.php';
+require 'TransmissionAuto.php';
+require 'TransmissionManual.php';
 
-class Niva extends AbstractCar implements EngineWork_Intrface
+
+class Niva extends AbstractCar
 {
+    //use TransmissionAuto;
+
+    use TransmissionManual;
 
     public function Engine()
     {
         $this->EngineStart();
-        $this->TransmissionAuto();
-        //$this->TransmissionManual();
+        if (method_exists(self::class, 'TransAuto')) {
+            $this->TransAuto($this->GetDirection());
+        }
+        if (method_exists(self::class, 'TransManual')) {
+            $this->TransManual($this->GetDirection(), $this->GetSpeed());
+        }
         $this->EngineWork();
-
-    }
-
-    public function EngineStart()
-    {
-        echo 'Вы включаете двигатель' . PHP_EOL;
-    }
-
-    public function EngineStop()
-    {
-        echo 'Выключаете двигатель' . PHP_EOL;
-    }
-
-    public function EngineWork()
-    {
-        $distance = $this->GetDistance();
-        for ($distanceNull = 0, $this->temperatur = 0; $distanceNull <= $distance; $distanceNull += 10, $this->temperatur += 5) {
-            echo 'Машина проехала:  ' . $distanceNull . PHP_EOL;
-            echo $this->Cooler($this->temperatur) . PHP_EOL;
-            if ($distanceNull === $distance) {
-                $this->EngineStop();
-            }
-        }
-    }
-    public function EngineOff(){
-        echo 'Двигатель не включен' . PHP_EOL;
-    }
-
-    private function Cooler()
-    {
-        echo 'Температура двигателя :' . $this->temperatur . PHP_EOL;
-        if ($this->temperatur == 90) {
-            echo 'Включить куллер' . PHP_EOL;
-            $this->temperatur = 80;
-        }
     }
 }
