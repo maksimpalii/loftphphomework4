@@ -4,9 +4,9 @@ require 'TransmissionAuto.php';
 require 'TransmissionManual.php';
 
 
-class Niva extends AbstractCar
+class Volga extends AbstractCar
 {
-    use TransmissionManual;
+    use TransmissionAuto;
 
     public function engine()
     {

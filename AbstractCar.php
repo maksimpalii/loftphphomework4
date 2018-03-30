@@ -1,7 +1,7 @@
 <?php
-require 'EngineWork_Intrface.php';
+require 'EngineWorkIntrface.php';
 
-abstract class AbstractCar implements EngineWork_Intrface
+abstract class AbstractCar implements EngineWorkIntrface
 {
 
     protected $name;
@@ -10,67 +10,67 @@ abstract class AbstractCar implements EngineWork_Intrface
     private $distance;
     protected $temperatur;
 
-    public function __construct($name = 'Niva')
+    public function __construct($name)
     {
         $this->name = $name;
     }
 
-    public function MoveCar($distance, $speed, $direction)
+    public function moveCar($distance, $speed, $direction)
     {
         $this->distance = $distance;
         $this->speed = $speed;
         $this->direction = $direction;
-        $this->GetHorsePower();
+        $this->getHorsePower();
         if ($speed > 0) {
-            $this->Engine();
+            $this->engine();
         } else {
-            $this->EngineOff();
+            $this->engineOff();
         }
     }
 
-    public function TransReverse()
+    public function transReverse()
     {
-        if ($this->GetDirection() === false) {
+        if ($this->getDirection() === false) {
             echo 'Включаете передачу назад ' . PHP_EOL;
         }
     }
 
-    public function GetHorsePower()
+    public function getHorsePower()
     {
-        echo 'Двигатель: ' . $this->GetSpeed() / 2 . ' лошадиных сил' . PHP_EOL;
+        echo 'Двигатель: ' . $this->getSpeed() / 2 . ' лошадиных сил' . PHP_EOL;
     }
 
-    public function GetName()
+    public function getName()
     {
         return $this->name;
     }
 
-    public function GetSpeed()
+    public function getSpeed()
     {
         return $this->speed;
     }
 
-    public function GetDistance()
+    public function getDistance()
     {
         return $this->distance;
     }
 
-    public function GetDirection()
+    public function getDirection()
     {
         return $this->direction;
     }
 
-    public function EngineStart()
+    public function engineStart()
     {
         echo 'Вы включаете двигатель' . PHP_EOL;
     }
 
-    public function EngineStop()
+    public function engineStop()
     {
         echo 'Выключаете двигатель' . PHP_EOL;
     }
 
-    private function Cooler($temperatur)
+    private function cooler($temperatur)
     {
         echo 'Температура двигателя :' . $temperatur . PHP_EOL;
         if ($temperatur == 90) {
@@ -79,19 +79,19 @@ abstract class AbstractCar implements EngineWork_Intrface
         }
     }
 
-    public function EngineWork()
+    public function engineWork()
     {
-        $distance = $this->GetDistance();
+        $distance = $this->getDistance();
         for ($distanceNull = 0, $this->temperatur = 0; $distanceNull <= $distance; $distanceNull += 10, $this->temperatur += 5) {
             echo 'Машина проехала:  ' . $distanceNull . PHP_EOL;
-            echo $this->Cooler($this->temperatur) . PHP_EOL;
+            echo $this->cooler($this->temperatur) . PHP_EOL;
             if ($distanceNull === $distance) {
-                $this->EngineStop();
+                $this->engineStop();
             }
         }
     }
 
-    public function EngineOff()
+    public function engineOff()
     {
         echo 'Двигатель не включен' . PHP_EOL;
     }
