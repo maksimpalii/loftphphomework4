@@ -15,7 +15,7 @@ abstract class AbstractCar implements EngineWork_Intrface
         $this->name = $name;
     }
 
-    public function moveCar($distance, $speed, $direction)
+    public function MoveCar($distance, $speed, $direction)
     {
         $this->distance = $distance;
         $this->speed = $speed;
@@ -25,6 +25,13 @@ abstract class AbstractCar implements EngineWork_Intrface
             $this->Engine();
         } else {
             $this->EngineOff();
+        }
+    }
+
+    public function TransReverse()
+    {
+        if ($this->GetDirection() === false) {
+            echo 'Включаете передачу назад ' . PHP_EOL;
         }
     }
 

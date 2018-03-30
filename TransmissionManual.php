@@ -2,17 +2,15 @@
 
 trait TransmissionManual
 {
-    public function TransManual($direction, $speed)
+    public function TransForward()
     {
-        if ($direction === true) {
+        if ($this->GetDirection() === true) {
             echo 'Включаете передачу вперед ' . PHP_EOL;
-            if ($speed > 0 && $speed <= 20) {
+            if ($this->GetSpeed() > 0 && $this->GetSpeed() <= 20) {
                 echo 'Включаем 1-ю передачу' . PHP_EOL;
             } else {
                 echo 'Включаем 2-ю передачу' . PHP_EOL;
             }
-        } else {
-            echo 'Включаете передачу назад ' . PHP_EOL;
         }
     }
 }

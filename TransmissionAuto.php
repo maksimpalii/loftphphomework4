@@ -2,12 +2,10 @@
 
 trait TransmissionAuto
 {
-    public function TransAuto($direction)
+    public function TransForward()
     {
-        if ($direction === true) {
+        if ($this->GetDirection() === true) {
             echo 'Включаете передачу вперед ' . PHP_EOL;
-        } else {
-            echo 'Включаете передачу назад ' . PHP_EOL;
         }
     }
 }
