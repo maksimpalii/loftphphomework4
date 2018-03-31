@@ -1,5 +1,5 @@
 <?php
-require 'EngineWorkIntrface.php';
+require_once 'EngineWorkIntrface.php';
 
 abstract class AbstractCar implements EngineWorkIntrface
 {
