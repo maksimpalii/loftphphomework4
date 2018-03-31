@@ -11,8 +11,11 @@ class Niva extends AbstractCar
     public function engine()
     {
         $this->engineStart();
-        $this->transReverse();
-        $this->transForward();
+        if ($this->getDirection() === false) {
+            $this->transReverse();
+        } else {
+            $this->transForward();
+        }
         $this->engineWork();
     }
 

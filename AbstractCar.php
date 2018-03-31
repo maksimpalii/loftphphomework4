@@ -30,9 +30,7 @@ abstract class AbstractCar implements EngineWorkIntrface
 
     public function transReverse()
     {
-        if ($this->getDirection() === false) {
-            echo 'Включаете передачу назад ' . PHP_EOL;
-        }
+        echo 'Включаете передачу назад ' . PHP_EOL;
     }
 
     public function getHorsePower()
