@@ -76,7 +76,16 @@ abstract class AbstractCar implements EngineWorkIntrface
             $this->temperatur = 80;
         }
     }
-
+    public function engine()
+    {
+        $this->engineStart();
+        if ($this->getDirection()) {
+            $this->transReverse();
+        } else {
+            $this->transForward();
+        }
+        $this->engineWork();
+    }
     public function engineWork()
     {
         $distance = $this->getDistance();
